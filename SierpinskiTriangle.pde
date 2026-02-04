@@ -5,6 +5,7 @@ int botlimit = 1;
 int toplimit = 50;
 float[] starsx = new float[100];
 float[] starsy = new float[100];
+boolean isColored = false;
 void setup(){
 size(400,400);
 speckle();
@@ -24,6 +25,9 @@ void keyPressed(){
     if(botlimit > 1){
     botlimit -=botlimit/2;
     }
+  }
+  if (key == ' '){
+    isColored = !isColored;
   }
   //background(200);
   bg();
@@ -53,6 +57,7 @@ void tri(int botx, int boty, int hw){
   //hw = -hw;
   botx = 400 - botx-hw;
   if (Math.abs(hw) < botlimit+botlimit){//15*toplimit){
+    if (isColored){fill(randomColor());}
     mogu(botx,boty,hw, hw);
   }
 }
@@ -84,6 +89,7 @@ void mogu(float x, float y, float w, float h){ // leftmost is 107.5 upmost is 10
   
   //stroke(1);
   //fill(50,200,255);
+  if(isColored){fill(#8DBFD1);}
   ellipse(x+w*57.5,y+h*74,w*115,h*60);
 }
 
@@ -102,6 +108,66 @@ void speckle(){
     starsx[i] =(float)(Math.random()*400);
     starsy[i] =(float)(Math.random()*400);
   }
+}
+
+color randomColor(){
+  int i = (int)(Math.random()*18);
+  if (i == 0){
+    return #6c2b3c; //maroon
+  }
+  if (i== 1){
+    return #ecc0d3; //rose
+  }
+  if (i==2){
+    return #ec7678; //coral
+  }
+  if (i==3){
+    return #132ed1; //darkblue
+  }
+  if (i == 4){
+    return #1d9853; //darkgreen
+  }
+  if (i== 5){
+    return #ed54ba; //pink
+  }
+  if (i==6){
+    return #ef7d0e; //orange
+  }
+  if (i==7){
+    return #3f474e; //black
+  }
+  if (i==8){
+    return #c51111; //red
+  }
+  if (i==9){
+    return #6b31bc; //purple
+  }
+  if (i==10){
+    return #71491e; //brown
+  }
+  if (i==11){
+    return #38FEDB; //cyan
+  }
+  if (i==12){
+    return #D6E0F0; //white
+  }
+  if (i==13){
+    return #50ef39; //lime
+  }
+  if (i==14){
+    return #f6f658; //yellow
+  }
+  if (i==15){
+    return #918977; //tan
+  }
+  if (i==16){
+    return #fffebe; //banana
+  }
+  if (i==17){
+    return #8397A7; //gray
+  }
+  return #FF0000;
+  
 }
 
 
